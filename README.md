@@ -10,14 +10,14 @@ LowDB db("data.csv");
 db.read();
 
 // now you can acces the data vector
-// via db.data
-for (auto s : db.data)
+// via db->data
+for (auto s : db->data)
 {
     cout << s << "\n";
 }
 
 // adding a new entry
-db.data.push_back("new entry");
+db.data->push_back("new entry");
 
 // save changes after write operation
 db.write();
