@@ -19,7 +19,7 @@ for (auto s : db->data)
 // adding a new entry
 db.data->push_back("new entry");
 
-// save changes after write operation
+// save changes
 db.write();
 ```
 
@@ -50,4 +50,4 @@ $ ./build.sh
 
 ## License
 
-Released under MIT License
+Released under [MIT License](./LICENSE.md)
