@@ -1,0 +1,45 @@
+name: Release LowDB - Static Library
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup C++ environment
+        uses: actions/setup-cpp@v2
+        with:
+          cpp-version: 'latest'
+
+      - name: Build library
+        run: |
+          chmod +x build/start.sh
+          build/start.sh
+          cp README.md build
+
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          draft: false
+          prerelease: false
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: liblowdb.a
+          path: build/liblowdb.a
+
+      - name: Add release asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/liblowdb.a
+          asset_name: liblowdb.a
+          asset_content_type: application/octet-stream
