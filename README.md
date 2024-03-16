@@ -17,13 +17,13 @@ To use LowDB in your C++ project, you can either link against the static library
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/henryhale/lowdb-cpp.git
+   git clone https://github.com/henryhale/lowdb.git
    ```
 
 2. Compile the library:
 
    ```bash
-   cd lowdb-cpp/build
+   cd lowdb/build
    chmod +x start.sh
    ./start.sh
    ```
