@@ -30,6 +30,3 @@ jobs:
           release_name: lowdb ${{ github.event.inputs.tag_name }}
           draft: false
           prerelease: false
-          asset_path: ./build/lowdb.a
-          asset_name: lowdb.a
-          asset_content_type: application/x-archive
