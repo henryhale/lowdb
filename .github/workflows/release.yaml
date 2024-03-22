@@ -21,6 +21,7 @@ jobs:
           chmod +x build/start.sh
           ./build/start.sh
           cp README.md build
+          ls build
 
       - name: Create Release
         id: create_release
@@ -32,12 +33,6 @@ jobs:
           release_name: lowdb ${{ github.event.inputs.tag_name }}
           draft: false
           prerelease: false
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: lowdb.a
-          path: build/lowdb.a
 
       - name: Add release asset
         uses: actions/upload-release-asset@v1
