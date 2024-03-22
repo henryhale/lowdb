@@ -1,8 +1,8 @@
 name: Release LowDB - Static Library
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [master]
 
 jobs:
   build:
@@ -11,11 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Setup C++ environment
-        uses: actions/setup-cpp@v2
-        with:
-          cpp-version: 'latest'
 
       - name: Build library
         run: |
