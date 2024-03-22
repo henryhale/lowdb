@@ -36,13 +36,13 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: liblowdb.a
-          path: build/liblowdb.a
+          name: lowdb.a
+          path: build/lowdb.a
 
       - name: Add release asset
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/liblowdb.a
-          asset_name: liblowdb.a
+          asset_path: build/lowdb.a
+          asset_name: lowdb.a
           asset_content_type: application/x-archive
