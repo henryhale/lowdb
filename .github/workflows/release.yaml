@@ -18,10 +18,7 @@ jobs:
 
       - name: Build library
         run: |
-          chmod +x build/start.sh
-          ./build/start.sh
-          cp README.md build
-          ls build
+          chmod +x start.sh && ./start.sh
 
       - name: Create Release
         id: create_release
