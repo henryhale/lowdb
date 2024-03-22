@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 # create output folder
-mkdir build && cd build
+rm -rf build && mkdir build && cd build
 
 # compile source files
-g++ -c -Iinclude ../source/*.cpp
+g++ -c ../source/*.cpp
 
 # generate static library
 ar rcs lowdb.a *.o
