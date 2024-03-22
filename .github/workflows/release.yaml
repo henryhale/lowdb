@@ -18,12 +18,11 @@ jobs:
           build/start.sh
           cp README.md build
 
-      - name: Create release
+      - name: Create Release
         id: create_release
         uses: actions/create-release@v1
-        with:
-          draft: false
-          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
