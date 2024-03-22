@@ -1,8 +1,12 @@
 name: Release LowDB - Static Library
 
 on:
-  push:
-    branches: [master]
+  workflow_dispatch:
+    inputs:
+        tag_name:
+          description: "Tag name for the release"
+          required: true
+          default: "v0.0.1"
 
 jobs:
   build:
@@ -23,6 +27,11 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.tag_name }}
+          release_name: lowdb ${{ github.event.inputs.tag_name }}
+          draft: false
+          prerelease: false
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
@@ -36,4 +45,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: build/liblowdb.a
           asset_name: liblowdb.a
-          asset_content_type: application/octet-stream
+          asset_content_type: application/x-archive
